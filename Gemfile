@@ -62,3 +62,6 @@ end
 # I want to add a CMS to our site so our admins can do things
 # and because active admin is out of date, lets get the very latest version
 gem 'activeadmin', github: "gregbell/active_admin"
+
+gem 'httparty'
+gem 'nokogiri'
