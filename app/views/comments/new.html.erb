@@ -1,0 +1,12 @@
+<h2>Add a comment</h2>
+
+<!-- Form includes the array as it is a nested element -->
+<!-- for more info about simple form go to https://github.com/plataformatec/simple_form -->
+
+<%= simple_form_for [@story, @comment] do |form| %>
+
+	<%= form.input :body, label: "Comment" %>
+
+	<%= form.button :submit %>
+
+<% end %>

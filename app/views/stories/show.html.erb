@@ -1,0 +1,47 @@
+<h1><%= @story.title%></h1>
+
+<p>
+	<%= link_to "Edit", edit_story_path(@story) %>
+
+	<%= link_to "Delete", story_path(@story), method: :delete, confirm: "Are you sure?" %> 
+</p>
+
+
+
+<h3>
+	<%= pluralize @story.votes.size, "vote" %>
+</h3>
+
+<p>
+	<!-- method: :post does it straight away -->
+	<%= link_to "Upvote", story_votes_path(@story), method: :post %>
+</p>
+
+<h3>
+	<!-- Displays the number of comments associated with a story -->
+	<!-- pluralize means 1 says comment and more says comments; the comman includes the singular word -->
+	<%= pluralize @story.comments.size, "comment" %>
+
+</h3>
+
+
+<!-- @story.comments as a story has many comments and this is what it relates too -->
+
+<% @story.comments.each do |comment| %>
+
+	<div class="comment"> 
+		<!-- The simple_format makes sure paragraphs can be kept -->
+		<p><%= simple_format comment.body %> </p>
+		<p>Left <%= time_ago_in_words comment.created_at %> ago</p>
+		
+	</div>
+
+<% end %>
+
+
+
+
+<p>
+	<!-- order of REST link takes same format as how it's nested in routes.rb and includes the paramater to say which story (i.e. this one) -->
+	<%= link_to "Add a comment", new_story_comment_path(@story) %>
+</p>
